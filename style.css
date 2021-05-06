@@ -14,7 +14,6 @@ body {
     width: 550px;
     height: 500px;
     overflow: hidden;
-    box-sizing: border-box;
 }
 
 .game-view-port {
