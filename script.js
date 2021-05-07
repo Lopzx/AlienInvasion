@@ -44,8 +44,7 @@ setInterval(() => {
 setInterval(() => {
     let enemy = document.querySelectorAll(".enemy");
     enemy.forEach((v) => {
-        let lastXPosition = parseInt(getComputedStyle(v).getPropertyValue("left")),
-            lastYPosition = parseInt(getComputedStyle(v).getPropertyValue("top"));
+        let lastYPosition = parseInt(getComputedStyle(v).getPropertyValue("top"));
             v.style.top = lastYPosition + 35 + "px"
             if (lastYPosition >= 300){
                 v.remove()
@@ -57,7 +56,6 @@ setInterval(() => {
 
 document.body.addEventListener("keydown", (e) => {
     let currentStyle = parseInt(getComputedStyle(player).getPropertyValue("left"));
-    let max = parseInt(getComputedStyle(viewPort).getPropertyValue("width"))
         if (e.key === "ArrowLeft" && currentStyle != 0 ){
             player.style.left = currentStyle - 50 + "px"
         }else if (e.key === "ArrowRight" && currentStyle != 500){
