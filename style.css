@@ -27,6 +27,7 @@ body {
 
 .enemy {
     background-image: url(gambar/enemy.png);
+    position: absolute;
     height: 20px;
     width: 50px;
     background-size: cover;
@@ -34,12 +35,23 @@ body {
     background-repeat: no-repeat;
 }
 
-.bullet {
-    background-image: url(gambar/bullet-bullet-pngrepo-com.png);
-    width: 20px;
+.duar {
+    background-image: url(gambar/blood.png);
+    width: 50px;
     background-size: contain;
     background-position: center;
-    height: 40px;
+    position: absolute;
+    height: 30px;
+    background-repeat: no-repeat;
+}
+
+.bullet {
+    background-image: url(gambar/bullet-bullet-pngrepo-com.png);
+    width: 50px;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    height: 30px;
     background-repeat: no-repeat;
 }
 
