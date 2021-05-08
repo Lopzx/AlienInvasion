@@ -16,6 +16,19 @@ body {
     overflow: hidden;
 }
 
+.container ul:nth-child(1) {
+    position: absolute;
+    z-index: 200;
+    left: -20px;
+}
+
+.container ul:nth-child(2){
+    top: 150px;
+    position: absolute;
+    z-index: 200;
+    left: -20px;
+}
+
 .game-view-port {
     position: relative;
     display: flex;
