@@ -1,8 +1,12 @@
-let player, viewPort;
+let player, viewPort, score, scoreBoard;
 viewPort = document.getElementById("port");
 player = document.getElementById("player");
+scoreBoard = document.getElementById("score")
+score = 0;
+scoreBoard.innerHTML = "Akumulasi Score = " + score;
 
-setInterval(function(){
+
+var createEnemy = setInterval(function(){
     let randomPosition = (Math.floor(Math.random() * 11)) * 50;
     let enemy = document.querySelectorAll(".enemy");
     const Musuh = document.createElement("div");
@@ -13,7 +17,8 @@ setInterval(function(){
 
 },1000)
 
-setInterval(() => {
+var bulletCollide = setInterval(() => {
+    scoreBoard.innerHTML = "Akumulasi Score = " + score;
     let bullets = document.querySelectorAll(".bullet"),
         enemy = document.querySelectorAll(".enemy"),
         lastXPosition,
@@ -32,6 +37,7 @@ setInterval(() => {
                 if(lastXPosition === bulletX && lastYPosition <= bulletY){
                     enemy[i].classList.replace("enemy", "duar")
                     v.remove();
+                    score++
                     setTimeout(() => {
                         enemy[i].remove();
                     },500)
@@ -41,15 +47,28 @@ setInterval(() => {
     })
 },10)
 
-setInterval(() => {
+var enemyMove = setInterval(() => {
     let enemy = document.querySelectorAll(".enemy");
+    let playerX = parseInt(getComputedStyle(player).getPropertyValue("left"));
     enemy.forEach((v) => {
         let lastYPosition = parseInt(getComputedStyle(v).getPropertyValue("top"));
+        let lastXPosition = parseInt(getComputedStyle(v).getPropertyValue("left"))
             v.style.top = lastYPosition + 35 + "px"
-            if (lastYPosition >= 300){
+            if (lastXPosition === playerX && lastYPosition >= 285 ){
+                player.remove()
                 v.remove()
+                clearInterval(createEnemy)
+                clearInterval(enemyMove)
+                clearInterval(bulletCollide)
+                alert("Crushed by Alien")
             }
-
+            else if (lastYPosition >= 300){
+                v.remove()
+                clearInterval(createEnemy)
+                clearInterval(enemyMove)
+                clearInterval(bulletCollide)
+                alert("Game Over")
+            }
     })
 },1000)
 
@@ -75,6 +94,5 @@ document.body.addEventListener("keypress", (e) => {
         viewPort.appendChild(bullet)
     }
 })
-
 
 
